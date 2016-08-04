@@ -14,13 +14,13 @@ for (d in dog_names) {
   print(d)
 }
 
-# Use a for-loop to print the numbers one through ten:
+# What is the value of d after the loop has been evaluated?
 
+# Use a for-loop to print the numbers one through ten:
 
 # Write a function square_vec that returns the element-wise squares of a vector
 # using a for loop:
 # e.g., square_vec(c(1, 2, 3)) should return c(1, 4, 9)
-
 
 # Write a function called get_factors which returns all positive integer factors
 # of an integer-valued input.
@@ -28,7 +28,6 @@ for (d in dog_names) {
 # Assume that the input is an integer (or for an extra challenge, verify this
 # and raise an error if the input is not an integer).
 # Hint: the modulo operator %% computes the remainder after division
-
 
 
 
@@ -46,12 +45,8 @@ for (i in df) {
   print(i)
 }
 
-
-
 # Write a for-loop to print out the rows of the data frame one by one
 # Hint: ?nrow()
-
-
 
 # Lists are also iterable:
 my_list <- list(dairy = c('Cheese', 'Milk'),
@@ -88,7 +83,6 @@ plot_inflammation <- function(filename) {
   title(filename)
 }
 
-
 # We could analyze all of the files by manually writing the filenames as inputs:
 # plot_inflammation('data/inflammation-01.csv')
 # plot_inflammation('data/inflammation-02.csv')
@@ -96,7 +90,7 @@ plot_inflammation <- function(filename) {
 # ...
 # but that would be tedious, prone to typos, and violate the DRY principle.
 # If we had a vector of filenames, we could iterate over it and apply our
-# function to each vector:
+# function to each element of the vector:
 
 # We can use list.files() to get a vector of inflammation dataset filenames:
 files <- list.files(path = 'data', pattern = 'inflammation', full.names = TRUE)
@@ -104,15 +98,14 @@ files
 
 # Write a for-loop that prints each filename and plots each dataset:
 
+# Use lapply() to do the same thing:
+
 # Write a function called plot_all which plots all of the datasets into a
 # 4 by 3 plot grid. par(mfrow = c(4, 3)) makes a 4 row by 3 column grid.
 # Set the plotting grid back to normal (1 X 1) upon exiting (see ?on.exit)
-
 
 # Challenge: one of your collaborators has decided that they want to plot the
 # maxima, minima, and means as lines on the plots instead of points. Modify
 # the relevant source code to plot lines instead of points and
 # recreate all of the plots using plot_all
 # Hint: see the "type" argument to plot and the ?lines function
-
-
