@@ -30,17 +30,30 @@ ggplot(msleep, aes(x = bodywt, y = brainwt)) +
 ggplot(msleep) +
   geom_point(aes(x = bodywt, y = brainwt))
 
-# Axes can be easily scaled
+# Axes can be scaled
 ggplot(msleep) +
   geom_point(aes(x = bodywt, y = brainwt)) +
   scale_y_log10() +
   scale_x_log10()
 
-# Or converted to other coordinate systems
-df <- data.frame(
-  variable = c("does not resemble", "resembles"),
-  value = c(20, 80)
-)
+# Because the first argument to ggplot() is a data.frame, you can make use of a
+# munge %>% plot workflow
+msleep %>%
+  filter(order == 'Primates') %>%
+  ggplot(aes(bodywt, brainwt, label = name)) +
+  geom_text() +
+  scale_y_log10() +
+  scale_x_log10()
+
+# coordinate systems can be modified:
+df <- data.frame(variable = c("does not resemble", "resembles"),
+                 value = c(20, 80))
+
+ggplot(df, aes(x = "", y = value, fill = variable)) +
+  geom_bar(width = 1, stat = "identity") +
+  scale_fill_manual(values = c("red", "yellow")) +
+  labs(title = "Pac man")
+
 ggplot(df, aes(x = "", y = value, fill = variable)) +
   geom_bar(width = 1, stat = "identity") +
   scale_fill_manual(values = c("red", "yellow")) +
@@ -59,11 +72,20 @@ p + theme_minimal()
 p + theme_classic()
 p + theme_light()
 
+# you can also use themes from the ggthemes package if it is installed
+# note that package::function uses a function from a package without loading
+# the entire package
+p + ggthemes::theme_base()
+p + ggthemes::theme_calc()
+p + ggthemes::theme_economist()
+p + ggthemes::theme_excel()
+p + ggthemes::theme_wsj()
+
 # you can easily add fitted lines
 p + stat_smooth()
 
 # you can even specify linear and generalized linear models
-p + stat_smooth(method = 'lm', formula = y ~ x + x^2)
+p + stat_smooth(method = 'lm', formula = y ~ poly(x, 2))
 
 # faceting makes panels for each level of a variable
 p +
@@ -79,11 +101,12 @@ ggplot(msleep, aes(x = bodywt, y = brainwt, color = vore)) +
   scale_y_log10() +
   scale_x_log10()
 
+# when color is defined at the entire plot level propagate to all relevant geoms
 ggplot(msleep, aes(x = bodywt, y = brainwt, color = vore)) +
   geom_point() +
   scale_y_log10() +
   scale_x_log10() +
-  stat_smooth(method = 'lm') +
+  stat_smooth(method = 'lm', se = FALSE, formula = y ~ poly(x, 2)) +
   theme_minimal()
 
 # boxplots are trivial
@@ -96,10 +119,12 @@ ggplot(msleep, aes(x = vore, y = awake)) +
   geom_jitter()
 
 # line plots are also easy
-data(co2)
-co2 <- data.frame(co2)
-lp <- ggplot(co2, aes(x = 1:length(co2), y = co2)) +
-  geom_line()
+data(lynx)
+lynx_df <- data.frame(year = 1821:1934, n_trapped = c(lynx))
+lp <- ggplot(lynx_df, aes(year, n_trapped)) +
+  geom_line() +
+  xlab('Time') +
+  ylab('Number of lynx trapped')
 lp
 
 # Your turn
