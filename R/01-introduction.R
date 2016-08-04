@@ -1,15 +1,15 @@
 ## Getting started -------------------------------------------------------------
 
 # print the current working directory:
-
+getwd()
 
 
 ## Objects and assignment ------------------------------------------------------
 
-# create an object (weight_kg) that is mapped to a numeric value
+# create an object (weight_kg) that is mapped to a numeric value:
 
-# compute weight in pounds and assign the result to a new object weight_lb:
-# (1 lb = 2.20462 kg, and 1 kg = 0.453592 lb)
+# compute weight in pounds and assign the result to a new object weight_lb by
+# multiplying weight_kg by 2.20462:
 
 # change the value of weight_kg:
 
@@ -32,6 +32,7 @@
 
 # use dim() to find the number of rows and columns in the data:
 
+# use str() to inspect the structure of the object:
 
 
 ## Subsetting and extraction ---------------------------------------------------
