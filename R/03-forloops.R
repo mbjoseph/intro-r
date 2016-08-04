@@ -8,7 +8,7 @@
 # where var is an iterator that takes on values in seq, and expr is some
 # expression to be evaluated at each iteration in the loop
 # e.g.,
-dog_names <- c('Tum-tum', 'Pomplemoose', 'Dudley', 'Pickle', 'Doug')
+dog_names <- c('Tum-tum', 'Haddock', 'Dudley', 'Pickle', 'Doug')
 
 for (d in dog_names) {
   print(d)
@@ -94,7 +94,7 @@ plot_inflammation <- function(filename) {
 # plot_inflammation('data/inflammation-02.csv')
 # plot_inflammation('data/inflammation-03.csv')
 # ...
-# but that would be tedious and prone to typos.
+# but that would be tedious, prone to typos, and violate the DRY principle.
 # If we had a vector of filenames, we could iterate over it and apply our
 # function to each vector:
 
