@@ -1,9 +1,20 @@
-# Introduction to R resources
+# Introduction to R
 
 This repository contains materials for introducing scientists to R programming. 
-All scripts are in the R directory. 
+All scripts are in the `R/` directory. 
 Data files are in the `data/` directory. 
-All of the data, and many of the scripts are from or based on the Software Carpentry introduction to R materials.
+All of the data, and many of the scripts are from or based on the [Software Carpentry introduction to R](http://swcarpentry.github.io/r-novice-inflammation/) materials.
+
+## Prerequisites
+
+This assumes that the following are installed:
+
+- R
+- Rstudio 
+- testthat
+- dplyr
+- tidyr
+- ggplot2
 
 ## Contents:
 
