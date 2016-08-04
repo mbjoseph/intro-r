@@ -2,15 +2,18 @@
 
 # create a function called fahr_to_kelvin that converts temperatures from
 # farenheight to Kelvin:
+# K = (f - 32) * (5 / 9) + 273.15
 
 # the freezing point of water is 32 degrees farenheight - what is it in Kelvin?
 
 # the boiling point of water is 212 degrees farenheight - what is it in Kelvin?
 
 
+
 ## Function composition --------------------------------------------------------
 
 # create a function called kelvin_to_celsius that converts from kelvin to C:
+# C = K - 273.15
 
 # create a function called fahr_to_celsius that converts from farenheight to C,
 # using the function fahr_to_kelvin and kelvin_to_celsius:
@@ -56,6 +59,9 @@ my_sum <- function(x, y = 2) {
 
 # Define an object y, mapped to the value 199 and execute my_sum(1). Which y
 # was used by my_sum?
+
+# Define an object x, mapped to the value 10 and execute my_sum().
+# Which x is used by my_sum?
 
 
 
@@ -118,7 +124,29 @@ g() # now g() has acquired x from the global environment
 
 
 
-# Application ------------------------------------------------------------------
+## Errors ----------------------------------------------------------------------
+
+# If a user provides invalid inputs, or the assumptions of a function are
+# violated in a way that invalidates a function's output, it is good practice to
+# raise errors. Errors can be raised using the stop() function:
+
+divide <- function(dividend, divisor) {
+  if (divisor == 0) {
+    stop('Division by zero is not allowed!')
+  }
+  dividend / divisor
+}
+
+divide(12, 4) # works
+
+divide(12, 0) # returns an error with our error message
+
+# Typically, if a function is going to fail, you want it to fail fast,
+# before many computationally expensive steps are taken in vain.
+
+
+
+## Application -----------------------------------------------------------------
 
 # In statistics, it is often useful to center and scale variables so that they
 # have mean = 0 and standard deviation = 1. Write a function called cscale that
@@ -163,4 +191,3 @@ expect_error(cscale('String input'))
 
 # Bonus question:
 # Does R treat single real numbers or integers as vectors? How do you know?
-
