@@ -36,8 +36,10 @@ iris %>%
   select(starts_with('Petal')) %>%
   str()
 
+# combining operations
 iris %>%
   select(ends_with('Width'), Species) %>%
+  filter(Sepal.Width > mean(Sepal.Width), Species != 'versicolor') %>%
   str()
 
 
@@ -59,9 +61,9 @@ iris %>%
 # Use gather() to convert the data to 'long' format, where each column is
 # a unique variable, storing the resulting data frame as long_df:
 
-
-## Challenge: the iris dataset can also be considered to be in 'wide' format.
+## Challenge: the iris dataset can also be considered to be in wide format.
 # Convert the iris dataset to long format:
+
 
 
 ## Mutation --------------------------------------------------------------------
@@ -70,11 +72,9 @@ iris %>%
 # than the current string representation. Create a new column in long_df called
 # num_t that is an integer valued timestep. (Hint: ?gsub, ?mutate):
 
-
 # Suppose we also want to have a unique identifier associated with each
 # observation formatted as pX_tY (e.g., p1_t2 for patient 1, time 2). Use the
 # mutate() function to add a column for this unique identifier (see ?paste):
-
 
 
 
@@ -82,7 +82,7 @@ iris %>%
 
 # Group-by summarize operations are incredibly useful for computing
 # statistics for each value or level of a variable. For instance,
-# to compute patient-level means, we would group_by() patient, then pipe your
+# to compute patient-level means, group your data by patient, then pipe your
 # grouped data frame to the summarize function and compute mean inflammation:
 
 # Now expand the code above by also computing the patient-wise min, max, mean,
@@ -105,12 +105,12 @@ iris %>%
 # Write a patient name generator function that takes a filename
 # (e.g., 'data/inflammation-01.csv') and an integer n for the number of patients
 # as arguments, and returns a vector of patient ids corresponding to the number
-# of the data frame and patients 1:n (e.g. 01-1, 01-2, 01-3, ...)
-# Hint: see gsub and paste:
+# of the data frame and patients 1:n (e.g. 01-1, 01-2, 01-3, ...) for dataset 01
+# and patients 1, 2, 3, ... (Hint: see gsub and paste):
 
 # Write a function that creates a long-form data frame containing three columns:
-# patient_id (chr), timestep (num), and inflammation (num) for one file. Make
-# use of your patient name generating function:
+# patient_id (chr), timestep (num), and inflammation (num), given the path to a
+# data file as the only argument. Make use of your name generating function:
 
 # Now, use list.files to make a vector of filenames pointing to the 12 data
 # files, and use lapply() to apply your function to each filename:
