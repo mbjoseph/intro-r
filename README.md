@@ -22,3 +22,4 @@ This assumes that the following are installed:
 - `R/02-functions.R`: an introduction to writing and testing functions
 - `R/03-forloops.R`: introduction to for-loops and iterables
 - `R/04-munging.R`: data munging with dplyr and tidyr
+- `R/05-ggplot.r`: a brief introduction to ggplot2
